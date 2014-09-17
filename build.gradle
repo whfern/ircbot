@@ -1,0 +1,44 @@
+buildscript {
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath "me.champeau.gradle:antlr4-gradle-plugin:0.1"
+  }
+}
+
+apply plugin: 'application'
+apply plugin: 'java'
+apply plugin: 'me.champeau.gradle.antlr4'
+
+mainClassName = "com.andrewreitz.ircbot.Main"
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.5'
+    compile 'org.antlr:antlr4-runtime:4.2.2'
+    compile 'com.netflix.rxnetty:rx-netty:0.3.13'
+    compile 'com.esotericsoftware.yamlbeans:yamlbeans:1.08'
+}
+
+antlr4 {
+  output=project.file("${project.buildDir}/generated-src/com/andrewreitz/ircbot/antlr")
+  extraArgs=['-package', 'com.andrewreitz.ircbot.antlr']
+}
+
+// make the Java compile task depend on the antlr4 task
+compileJava.dependsOn antlr4
+
+// add the generated source files to the list of java sources
+sourceSets.main.java.srcDirs += "${project.buildDir}/generated-src/"
+
+// add antlr4 to classpath
+configurations {
+  compile.extendsFrom antlr4
+}
