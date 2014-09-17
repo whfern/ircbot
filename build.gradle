@@ -21,7 +21,8 @@ repositories {
 }
 
 dependencies {
-    compile 'org.slf4j:slf4j-api:1.7.5'
+    compile 'org.slf4j:slf4j-api:1.7.7'
+    compile 'org.slf4j:slf4j-simple:1.7.7'
     compile 'org.antlr:antlr4-runtime:4.2.2'
     compile 'com.netflix.rxnetty:rx-netty:0.3.13'
     compile 'com.esotericsoftware.yamlbeans:yamlbeans:1.08'
