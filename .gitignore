@@ -16,3 +16,6 @@ build/
 
 # Ignore Gradle GUI config
 gradle-app.setting
+
+# Ignore Checkstyles Cache
+checkstyle.cache
