@@ -12,7 +12,7 @@ SPACE : ' ' ;
 
 cmd : letMeGoogleThatForYou | google | stackOverflow | dictionary | duckDuckGo ;
 
-letMeGoogleThatForYou : 'lmgtfy ' arg ;
+letMeGoogleThatForYou : 'lmgtfy' SPACE arg ;
 
 google : 'g' SPACE arg ;
 
